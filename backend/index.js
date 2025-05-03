@@ -4,7 +4,7 @@ const express= require("express");
 const req = require("express/lib/request");
 const res = require("express/lib/response");
 const mongoose=require("mongoose")
-const bodyparser=require("body-parser")
+const bodyParser=require("body-parser")
 const cors=require("cors")
 const {HoldingsModel}=require('./model/HoldingsModel');
 const { PositionsModel } = require("./model/PositionsModel");
@@ -15,7 +15,7 @@ const uri= process.env.MONGO_URL;
 const app = express();
 
 app.use(cors());
-app.use(bodyparser.json());
+app.use(bodyParser.json());
 
 
 // app.get('/addHoldings', async(req,res)=>{
@@ -209,6 +209,7 @@ app.post('/newOrder', async(req,res)=>{
         qty: req.body.qty,
         price: req.body.price,
         mode: req.body.mode,
+        
     })
     newOrder.save();
     res.send("order saved")
